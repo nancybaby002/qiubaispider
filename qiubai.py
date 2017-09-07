@@ -37,12 +37,12 @@ def get_qiubai(page, file):
             except Exception, e:
                 logging.warn(e)
                 return
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html,"html")
     content = soup.find(id="content-left")
     articles = content.find_all(class_="article")
     for article in articles:
         text = article.find(class_="content").getText()
-        file.write(str(text) + "\n")
+        file.write(str(text) + "")
 
 
 def getqiubai_txt(page):
@@ -54,4 +54,4 @@ def getqiubai_txt(page):
 
 
 if __name__ == '__main__':
-    getqiubai_txt(35)
+    getqiubai_txt(13)
