@@ -51,7 +51,7 @@ def get_qiubai(page, file):
 
 def getqiubai_txt(page):
     page = page + 1
-    filename="糗百段子"+ datetime.datetime.now().strftime('%Y-%m-%d')
+    filename="糗百段子"+ datetime.datetime.now().strftime('%Y%m%d%H%M')
     File = open(filename.decode('utf-8')+".txt", "w")
     for a in range(1, page):
         get_qiubai(a, File)
