@@ -37,12 +37,15 @@ def get_qiubai(page, file):
             except Exception, e:
                 logging.warn(e)
                 return
-    soup = BeautifulSoup(html,"html")
+    soup = BeautifulSoup(html,"html.parser")
     content = soup.find(id="content-left")
     articles = content.find_all(class_="article")
+    # 过滤所有携带查看原文的段子
+    filters = ['查看全文']
     for article in articles:
-        text = article.find(class_="content").getText()
-        file.write(str(text) + "")
+        text = article.find(class_="content").getText().replace(" ","").replace("\t","").strip()
+        if any(keyword in text for keyword in filters): continue
+        file.write(str(text) + "\n\n\n")
 
 
 def getqiubai_txt(page):
