@@ -37,7 +37,7 @@ def get_qiubai(page, file):
             except Exception, e:
                 logging.warn(e)
                 return
-    soup = BeautifulSoup(html, "lxml")
+    soup = BeautifulSoup(html)
     content = soup.find(id="content-left")
     articles = content.find_all(class_="article")
     for article in articles:
