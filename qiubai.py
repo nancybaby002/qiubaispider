@@ -3,6 +3,7 @@
 import urllib2
 import sys
 import time
+import datetime
 from bs4 import BeautifulSoup
 import logging
 
@@ -50,7 +51,8 @@ def get_qiubai(page, file):
 
 def getqiubai_txt(page):
     page = page + 1
-    File = open("qiubai.txt", "w")
+    filename="糗百段子"+ datetime.datetime.now().strftime('%Y-%m-%d')
+    File = open(filename.decode('utf-8')+".txt", "w")
     for a in range(1, page):
         get_qiubai(a, File)
     File.close()
